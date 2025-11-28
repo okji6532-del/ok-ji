@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnapGenius AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            colors: {
+              cosmic: {
+                950: '#080402', // Obsidian / Warm Black
+                900: '#1a0f0a', // Dark Espresso
+                800: '#2d1b14', // Dark Leather
+                700: '#45281e', // Medium Bronze
+              },
+              // LUXURY ORANGE BRANDING
+              primary: {
+                300: '#fdba74',
+                400: '#fb923c', // Orange
+                500: '#f97316', // Vibrant Orange (Hermes Style)
+                600: '#ea580c', // Deep Orange
+                900: '#7c2d12',
+              },
+              // Re-mapping Magenta to Deep Red for fiery gradients
+              magenta: {
+                400: '#f87171',
+                500: '#ef4444', // Red
+                600: '#dc2626', // Deep Red
+              },
+              // Re-mapping Teal to Gold/Amber for luxury accents
+              teal: {
+                400: '#fbbf24', // Gold
+                500: '#f59e0b', // Amber
+                600: '#d97706', // Dark Amber
+              },
+              accent: {
+                400: '#fde047',
+                500: '#facc15', // Yellow/Gold
+                600: '#eab308',
+              }
+            },
+            animation: {
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shimmer': 'shimmer 2.5s infinite linear',
+              'fade-in': 'fadeIn 0.8s ease-out forwards',
+              'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'float': 'float 6s ease-in-out infinite',
+              'glow': 'glow 2s ease-in-out infinite alternate',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' }
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' }
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' }
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-15px)' }
+              },
+              glow: {
+                '0%': { boxShadow: '0 0 5px rgba(249, 115, 22, 0.2)' },
+                '100%': { boxShadow: '0 0 20px rgba(249, 115, 22, 0.6)' }
+              }
+            }
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #080402;
+        /* Refined Dot Grid Pattern */
+        background-image: 
+          radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+          radial-gradient(circle at 15% 50%, rgba(249, 115, 22, 0.08) 0%, transparent 45%),
+          radial-gradient(circle at 85% 30%, rgba(234, 179, 8, 0.05) 0%, transparent 35%);
+        background-size: 24px 24px, 100% 100%, 100% 100%;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      /* Premium Glassmorphism - Warm Tint */
+      .glass-panel {
+        background: rgba(26, 15, 10, 0.7);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+      }
+      
+      .glass-input {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: white;
+        transition: all 0.3s ease;
+      }
+      .glass-input:focus {
+        background: rgba(0, 0, 0, 0.5);
+        border-color: #f97316;
+        box-shadow: 0 0 15px rgba(249, 115, 22, 0.1);
+        outline: none;
+      }
+      
+      ::selection {
+        background-color: rgba(249, 115, 22, 0.3);
+        color: white;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2d1b14;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #f97316;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
